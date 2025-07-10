@@ -44,7 +44,7 @@ void setup()
     //Para gerar uma senoide de 1kHz com 100 amostras, o período total é 1000 µs.
     //Assim, cada amostra deve ser atualizada a cada 1000/100 = 10 µs.
     jtaskAttachFunc(buildWave, 10UL);
-    adcDmaSetup(ADC1_CHANNEL_1, 10UL, osciloscope, 1000UL, ADC_WIDTH_BIT_12);
+    adcDmaSetup(ADC1_CHANNEL_0, 10UL, osciloscope, 1000UL, ADC_WIDTH_BIT_12);
 }
 
 void loop()
