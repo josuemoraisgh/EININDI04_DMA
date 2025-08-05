@@ -46,6 +46,34 @@ O DMA é amplamente utilizado em:
 
 ---
 
+## Canais ADC suportados no ESP32 (ADC1)
+
+Ao utilizar leitura via DMA/I2S com ESP32, **somente canais do ADC1** são suportados. Veja abaixo a tabela dos canais compatíveis:
+
+| Canal (API)      | GPIO correspondente |
+|------------------|--------------------|
+| ADC1_CHANNEL_0   | GPIO36 (VP)        |
+| ADC1_CHANNEL_1   | GPIO37 (VN)        |
+| ADC1_CHANNEL_2   | GPIO38             |
+| ADC1_CHANNEL_3   | GPIO39             |
+| ADC1_CHANNEL_4   | GPIO32             |
+| ADC1_CHANNEL_5   | GPIO33             |
+| ADC1_CHANNEL_6   | GPIO34             |
+| ADC1_CHANNEL_7   | GPIO35             |
+
+> **Observação:** Canais do ADC2 **não** são suportados via DMA/I2S.
+
+---
+
+## Limitação: apenas um canal por vez
+
+> **Importante:**  
+> O periférico I2S do ESP32 com suporte a ADC interno **permite a leitura de apenas UM canal do ADC1 por vez via DMA**.  
+> Caso precise ler múltiplos canais, é necessário alternar entre eles no software, configurando o canal desejado antes de cada leitura.  
+> Não é possível capturar amostras simultâneas de dois ou mais canais usando DMA/I2S interno.
+
+---
+
 ## Conclusão
 
 O Direct Memory Access (DMA) é um componente essencial na arquitetura moderna de computadores, permitindo um processamento mais eficiente ao reduzir a carga da CPU em operações de transferência de dados. Seu uso otimiza aplicações que exigem alta taxa de transferência e baixa latência, tornando os sistemas mais rápidos e responsivos.
